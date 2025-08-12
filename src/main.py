@@ -5,7 +5,7 @@ import pygame
 from pygame.locals import *
 # 导入sys库，用于与Python解释器交互
 import sys
-
+from const import *
 # 初始化pygame所有模块
 pygame.init()
 
@@ -17,8 +17,8 @@ import image
 
 # 使用自定义的image类导入背景图片
 # image = pygame.image.load('../pic/other/back.png')
-img = image.Image('../pic/other/back.png')
-
+img = image.Image(PATH_BACK,0,(0,0),GAME_SIZE,0)
+img1 = image.Image('../pic/zombie/0/%d.png',0,(1280,200),(100,128),15)
 # 游戏主循环
 while True:
     # 遍历事件队列，获取所有发生的事件（比如鼠标点击、键盘输入、关闭窗口等）
@@ -35,6 +35,9 @@ while True:
     # 调用自定义 Image 类的 draw 方法，把图片绘制到 DS 这个窗口上
     img.draw(DS)
 
+    img1.doleft()
+    img1.draw(DS)
+    img1.updateIndex((img1.pathIndex + 1)%15)
     # 更新整个窗口的显示内容，把上面绘制的图片显示出来
     pygame.display.update()
 
