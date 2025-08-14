@@ -10,10 +10,22 @@ class ObjectBase(image.Image):
         self.preIndexTime = 0
         self.prePositionTime = 0
         super(ObjectBase,self).__init__(
-            self.getData()['PATH'],pathIndex,pos,size,pathIndexCount)
+            self.getData()['PATH'],
+            0,
+            pos,
+            self.getData()['SIZE'],
+            self.getData()['IMAGE_INDEX_MAX']
+        )
 
     def getData(self):
         return data_object.data[self.id]
+
+    def getPositionCD(self):
+        return self.getData()['POSITION_CD']
+
+    def getImageIndexCD(self):
+        return self.getData()['IMAGE_INDEX_CD']
+
     def update(self):
         self.checkImageIndex()
         self.checkPosition()

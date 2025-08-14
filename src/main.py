@@ -20,7 +20,7 @@ import peabullet
 # image = pygame.image.load('../pic/other/back.png')
 
 img = image.Image(PATH_BACK,0,(0,0),GAME_SIZE,0)
-zom = zombiebase.ZombieBase(0,(1000,200))
+zom = zombiebase.ZombieBase(1,(1000,200))
 pb = peabullet.PeaBullet(0,(0,200))
 # 游戏主循环
 while True:
