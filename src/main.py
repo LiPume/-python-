@@ -16,12 +16,22 @@ DS = pygame.display.set_mode((1280 , 600))
 import image
 import zombiebase
 import peabullet
+import sunlight
+import sunflower
 # 使用自定义的image类导入背景图片
 # image = pygame.image.load('../pic/other/back.png')
 
 img = image.Image(PATH_BACK,0,(0,0),GAME_SIZE,0)
 zom = zombiebase.ZombieBase(1,(1000,200))
 pb = peabullet.PeaBullet(0,(0,200))
+
+sfList = []
+for i in range(GRID_COUNT[0]):
+    for j in range(GRID_COUNT[1]):
+        pos = (LEFT_TOP[0] + i * GRID_SIZE[0] ,LEFT_TOP[1] + j * GRID_SIZE[1])
+        sf = sunflower.Sunflower(3,pos)
+        sfList.append(sf)
+
 # 游戏主循环
 while True:
     # 遍历事件队列，获取所有发生的事件（比如鼠标点击、键盘输入、关闭窗口等）
@@ -43,5 +53,9 @@ while True:
     # 更新整个窗口的显示内容，把上面绘制的图片显示出来
     pb.update()
     pb.draw(DS)
+
+    for sf in sfList:
+        sf.update()
+        sf.draw(DS)
     pygame.display.update()
 
