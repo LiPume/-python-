@@ -10,7 +10,7 @@ class ObjectBase(image.Image):
         self.preIndexTime = 0
         self.prePositionTime = 0
         self.preSummonTime = 0
-        super(ObjectBase,self).__init__(
+        super().__init__(
             self.getData()['PATH'],
             0,
             pos,
@@ -32,6 +32,12 @@ class ObjectBase(image.Image):
 
     def getSpeed(self):
         return self.getData()['SPEED']
+
+    def getPrice(self):
+        return self.getData()['PRICE']
+
+    def canLoot(self):
+        return self.getData()['CAN_LOOT']
 
     def update(self):
         self.checkSummon()
@@ -63,4 +69,10 @@ class ObjectBase(image.Image):
         return True
 
     def preSummon(self):
+        pass
+
+    def hasSummon(self):
+        pass
+
+    def doSummon(self):
         pass

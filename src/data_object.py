@@ -8,6 +8,8 @@ data = {
         'SUMMON_CD': 1e8,
         'SIZE' : (44,44),
         'SPEED' : (4,0),
+        'CAN_LOOT' : False,
+        'PRICE' : 0,
     },
     1 : {
         'PATH' :'../pic/zombie/0/%d.png',
@@ -17,6 +19,8 @@ data = {
         'SUMMON_CD': 1e8,
         'SIZE': (100,128),
         'SPEED': (-2.5, 0),
+        'CAN_LOOT': False,
+        'PRICE': 0,
     },
     2: {
         'PATH': '../pic/other/sunlight/%d.png',
@@ -26,6 +30,8 @@ data = {
         'SUMMON_CD': 1e8,
         'SIZE': (80,80),
         'SPEED': (0,2),
+        'CAN_LOOT': True,
+        'PRICE': 5,
     },
     3: {
         'PATH': '../pic/plant/sunflower/%d.png',
@@ -35,5 +41,18 @@ data = {
         'SUMMON_CD': 8,
         'SIZE': (128, 128),
         'SPEED': (0, 0),
+        'CAN_LOOT': False,
+        'PRICE': 30,
+    },
+    4: {
+        'PATH': '../pic/plant/peashooter/%d.png',
+        'IMAGE_INDEX_MAX': 15,
+        'IMAGE_INDEX_CD': 0.15,
+        'POSITION_CD': 1e9,
+        'SUMMON_CD': 3,
+        'SIZE': (128, 128),
+        'SPEED': (0, 0),
+        'CAN_LOOT': False,
+        'PRICE': 20,
     }
 }

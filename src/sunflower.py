@@ -3,19 +3,17 @@ import sunlight
 
 class Sunflower(objectbase.ObjectBase):
     def __init__(self,id,pos):
-        super(Sunflower,self).__init__(id,pos)
-        self.sunLights = []
+        super().__init__(id,pos)
+        self.hasSunlight = False
 
     def preSummon(self):
-        sl = sunlight.SunLight(2,(self.pos[0]+20,self.pos[1]-10))
-        self.sunLights.append(sl)
+        self.hasSunlight = True
 
-    def update(self):
-        super(Sunflower,self).update()
-        for sl in self.sunLights:
-            sl.update()
+    def hasSummon(self):
+        return self.hasSunlight
 
-    def draw(self,ds):
-        super(Sunflower,self).draw(ds)
-        for sl in self.sunLights:
-            sl.draw(ds )
+    def doSummon(self):
+        if self.hasSummon():
+            self.hasSunlight = False
+            return sunlight.SunLight(2,(self.pos[0]+20,self.pos[1]-10))
+
