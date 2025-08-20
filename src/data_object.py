@@ -10,6 +10,8 @@ data = {
         'SPEED' : (4,0),
         'CAN_LOOT' : False,
         'PRICE' : 0,
+        'HP' : 1,
+        'ATT' : 1,
     },
     1 : {
         'PATH' :'../pic/zombie/0/%d.png',
@@ -21,6 +23,8 @@ data = {
         'SPEED': (-2.5, 0),
         'CAN_LOOT': False,
         'PRICE': 0,
+        'HP': 5,
+        'ATT': 1,
     },
     2: {
         'PATH': '../pic/other/sunlight/%d.png',
@@ -32,6 +36,8 @@ data = {
         'SPEED': (0,2),
         'CAN_LOOT': True,
         'PRICE': 5,
+        'HP': 1e8,
+        'ATT': 0,
     },
     3: {
         'PATH': '../pic/plant/sunflower/%d.png',
@@ -43,6 +49,8 @@ data = {
         'SPEED': (0, 0),
         'CAN_LOOT': False,
         'PRICE': 30,
+        'HP': 5,
+        'ATT': 0,
     },
     4: {
         'PATH': '../pic/plant/peashooter/%d.png',
@@ -54,5 +62,7 @@ data = {
         'SPEED': (0, 0),
         'CAN_LOOT': False,
         'PRICE': 20,
+        'HP': 5,
+        'ATT': 0,
     }
 }

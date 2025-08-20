@@ -10,6 +10,8 @@ class ObjectBase(image.Image):
         self.preIndexTime = 0
         self.prePositionTime = 0
         self.preSummonTime = 0
+        self.hp = self.getData()['HP']
+        self.attack = self.getData()['ATT']
         super().__init__(
             self.getData()['PATH'],
             0,
@@ -35,6 +37,9 @@ class ObjectBase(image.Image):
 
     def getPrice(self):
         return self.getData()['PRICE']
+
+    def isCollide(self,other):
+        return self.getRect().colliderect(other.getRect())
 
     def canLoot(self):
         return self.getData()['CAN_LOOT']
