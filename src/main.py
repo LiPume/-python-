@@ -1,12 +1,21 @@
 # 主窗口
 # 导入主要工具pygame库
+import os.path
+
 import pygame
 # 导入所有常量，如QUIT
 from pygame.locals import *
 # 导入sys库，用于与Python解释器交互
 import sys
 from const import *
+import os
+current_path = os.path.abspath(__file__)
+
+top_path = '\\'.join(current_path.split('\\')[:-2])
+sys.path.append(top_path)
+
 from game import *
+
 # 初始化pygame所有模块
 pygame.init()
 

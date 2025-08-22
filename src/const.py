@@ -1,7 +1,7 @@
 GAME_SIZE = (1280,600)
 LEFT_TOP = (200,65)
 GRID_SIZE = (76,96)
-GRID_COUNT = (9,5)
+
 PATH_BACK = '../pic/other/back.png'
 PATH_LOSE = '../pic/other/lose.png'
 SUNFLOWER_ID = 3
@@ -10,3 +10,5 @@ PEASHOOTER_ID = 4
 ZOMBIE_ID = 1
 ZOMBIE_BORN_X = 14
 ZOMBIE_BORN_CD = 3
+
+SERVER_IP = '127.0.0.1'

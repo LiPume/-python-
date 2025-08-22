@@ -7,6 +7,9 @@ import peashooter
 import zombiebase
 import time
 import random
+import asyncio
+import asyncclient
+from share.const import *
 
 class Game(object):
     def __init__(self,ds):
@@ -29,6 +32,8 @@ class Game(object):
                 col.append(0)
             self.hasPlant.append(col)
 
+        self.client = asyncclient.AsyncClient(self,SERVER_IP,SERVER_PORT)
+        asyncio.run(self.client.c2s({'type': C2S_GET_PLANT}))
 
     def renderFont(self):
         textImage = self.goldFont.render("Gold: "+str(self.gold),True,(0,0,0))
@@ -144,17 +149,8 @@ class Game(object):
                 return True
         return False
 
-    def checkAddPlant(self,mousePos,objID):
-        x, y = self.getIndexByPos(mousePos)
-        if x<0 or x>=GRID_COUNT[0]:
-            return
-        if y<0 or y>=GRID_COUNT[1]:
-            return
-        if self.gold < data_object.data[objID]['PRICE']:
-            return
-        if self.hasPlant[x][y] == 1:
-            return
-        self.gold -= data_object.data[objID]['PRICE']
+    def addPlant(self,pos,objID):
+        x, y = pos
         if objID == SUNFLOWER_ID:
             self.addSunFlower(x, y)
         if objID == PEASHOOTER_ID:
@@ -166,7 +162,15 @@ class Game(object):
         mousePos = pygame.mouse.get_pos()
         if self.checkLoot(mousePos):
             return
+        plantIdx = -1
         if btn == 1:
-            self.checkAddPlant(mousePos,SUNFLOWER_ID)
-        if btn == 3:
-            self.checkAddPlant(mousePos,PEASHOOTER_ID)
+            plantIdx = SUNFLOWER_ID
+        elif btn ==3:
+            plantIdx = PEASHOOTER_ID
+        if plantIdx != -1:
+            asyncio.run(self.client.c2s({'type':C2S_ADD_PLANT,'pos':self.getIndexByPos(mousePos),'plant_idx':plantIdx}))
+
+    def initPlantInfo(self,plantInfo):
+        for x , col in enumerate(plantInfo):
+            for y ,row in enumerate(col):
+                self.addPlant((x,y),row)
